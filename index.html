@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Пулы ликвидности - Интенсив от Сергея Мухомедзянова</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:0;background:#1a1a1a;font-family:'Montserrat',sans-serif;color:#d4d4d4;scroll-behavior:smooth}
+.grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none;z-index:0}
+.grid-line{border-right:1px solid rgba(255,255,255,0.04)}
+.grid-line:last-child{border-right:none}
+section{position:relative;z-index:1}
+.accent-bar{width:80px;height:6px;background:#ef4444;border-radius:3px}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px}
+.card-hover:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.12);transition:.2s}
+.btn-cta{display:inline-block;background:#ef4444;color:#fff;font-weight:700;font-size:18px;padding:16px 40px;border-radius:12px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-cta:hover{background:#dc2626;transform:translateY(-2px);box-shadow:0 8px 30px rgba(239,68,68,0.3)}
+.icon-box{width:44px;height:44px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-box i{color:#ef4444;font-size:18px}
+h1,h2,h3{color:#fff;margin:0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.08)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 0;cursor:pointer;color:#fff;font-weight:600;font-size:16px}
+.faq-q i{color:#ef4444;transition:.3s;font-size:14px}
+.faq-q.open i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:#d4d4d4;font-size:15px;line-height:1.7}
+.faq-a.open{max-height:500px;padding-bottom:20px}
+.module-tag{display:inline-block;background:rgba(239,68,68,0.12);color:#ef4444;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<!-- Grid Background -->
+<div class="grid-bg"><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div></div>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center">
+<div class="max-w-4xl mx-auto px-6 py-20 text-center">
+<img src="sergey-photo.jpg" alt="Сергей Мухомедзянов" class="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 object-cover object-top border-2 border-red-500" style="border-color:rgba(239,68,68,0.5)"/>
+<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+Научись зарабатывать от&nbsp;1%&nbsp;до&nbsp;10% в&nbsp;месяц на&nbsp;пулах ликвидности
+</h1>
+<p class="text-lg md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
+Безопасно, под руководством наставника, за&nbsp;13&nbsp;уроков
+</p>
+<a href="https://t.me/smukhomedzyanov" class="btn-cta">Получить доступ за 990 ₽</a>
+<div class="flex flex-wrap justify-center gap-6 mt-12 text-sm text-gray-500">
+<span><i class="fa-solid fa-play mr-2 text-red-500"></i>13 уроков по 5-20 мин</span>
+<span><i class="fa-brands fa-telegram mr-2 text-red-500"></i>Всё внутри Telegram</span>
+<span><i class="fa-solid fa-comments mr-2 text-red-500"></i>Обратная связь лично</span>
+</div>
+</div>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section class="py-20">
+<div class="max-w-5xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-12">Для кого этот интенсив</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-piggy-bank"></i></div>
+<h3 class="text-lg font-semibold mb-2">Хочешь доход выше банковских ставок</h3>
+<p class="text-sm text-gray-500">Депозит дает 5-8% годовых. Пулы ликвидности дают от 12% до 120%+ в зависимости от стратегии.</p>
+</div>
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-coins"></i></div>
+<h3 class="text-lg font-semibold mb-2">Уже покупаешь крипту, но она просто лежит</h3>
+<p class="text-sm text-gray-500">ETH, USDT, BTC на кошельке не работают. Пулы позволяют зарабатывать комиссии с каждого обмена.</p>
+</div>
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
+<h3 class="text-lg font-semibold mb-2">Новичок в крипте, но хочешь разобраться</h3>
+<p class="text-sm text-gray-500">С нуля: от покупки крипты до открытия позиции. Пошагово, с проверкой на каждом этапе.</p>
+</div>
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-briefcase"></i></div>
+<h3 class="text-lg font-semibold mb-2">Предприниматель, ищешь новые инструменты</h3>
+<p class="text-sm text-gray-500">Пулы ликвидности как альтернатива традиционным инвестициям. Диверсификация дохода.</p>
+</div>
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+<h3 class="text-lg font-semibold mb-2">Боишься потерять деньги в крипте</h3>
+<p class="text-sm text-gray-500">Первый урок полностью про безопасность. Никаких скам-токенов и мутных схем.</p>
+</div>
+<div class="card card-hover">
+<div class="icon-box mb-4"><i class="fa-solid fa-clock"></i></div>
+<h3 class="text-lg font-semibold mb-2">Нет времени на трейдинг</h3>
+<p class="text-sm text-gray-500">Пулы работают 24/7. Настроил один раз, проверяешь раз в неделю. Не нужно сидеть у графиков.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ЧТО ВНУТРИ -->
+<section class="py-20">
+<div class="max-w-5xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-4">Что внутри: 13 уроков, 4 модуля</h2>
+<p class="text-gray-500 mb-12">От первого кошелька до собственной стратегии</p>
+
+<!-- Модуль 0 -->
+<div class="mb-10">
+<div class="module-tag mb-4">Модуль 0: Старт</div>
+<div class="space-y-4">
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 1. Безопасность</h3><p class="text-sm text-gray-500">Как не потерять деньги до того, как начнешь зарабатывать. Сети, фишинг, сид-фразы.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-cart-shopping"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 2. Покупка крипты</h3><p class="text-sm text-gray-500">Быстро, дешево, легально. Лучшие способы с комиссией от 0.5%.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-rocket"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 3. Открываем первый пул за 20 минут</h3><p class="text-sm text-gray-500">Реальная позиция на $10-15. Сразу практика, теория потом.</p></div>
+</div>
+</div>
+</div>
+
+<!-- Модуль 1 -->
+<div class="mb-10">
+<div class="module-tag mb-4">Модуль 1: Фундамент</div>
+<div class="space-y-4">
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-cube"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 4. Блокчейн и DeFi простыми словами</h3><p class="text-sm text-gray-500">Карта DeFi: что такое пулы, стейкинг, лендинг. Откуда доходность.</p></div>
+</div>
+</div>
+</div>
+
+<!-- Модуль 2 -->
+<div class="mb-10">
+<div class="module-tag mb-4">Модуль 2: Механика пулов</div>
+<div class="space-y-4">
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-function"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 5. Как работает пул: формула x * y = k</h3><p class="text-sm text-gray-500">AMM на пальцах. Как формируется цена, как перетекают активы.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 6. Диапазон: V2, V3 и концентрированная ликвидность</h3><p class="text-sm text-gray-500">Широкий vs узкий диапазон. Что будет с деньгами при движении цены.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 7. Impermanent Loss</h3><p class="text-sm text-gray-500">Когда опасен, когда нет. Как считать и когда комиссии компенсируют потери.</p></div>
+</div>
+</div>
+</div>
+
+<!-- Модуль 3 -->
+<div class="mb-10">
+<div class="module-tag mb-4">Модуль 3: Стратегия и практика</div>
+<div class="space-y-4">
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-list-check"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 8. 5 шагов: от выбора пула до открытия позиции</h3><p class="text-sm text-gray-500">Четкий алгоритм. Разбор реальных пулов: какой взять и почему.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-desktop"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 9. Скринкаст: десктоп и мобильный</h3><p class="text-sm text-gray-500">Пошаговое открытие позиции. Как забрать комиссии, как закрыть.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-gauge-high"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 10. Мониторинг, ребаланс, ошибки</h3><p class="text-sm text-gray-500">Что делать после открытия. Когда ребалансировать, когда закрывать.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-chess"></i></div>
+<div><h3 class="font-semibold mb-1">Урок 11. Большая картина: пулы в системе</h3><p class="text-sm text-gray-500">Личная стратегия. Кейс $113k +117% годовых на стейблах. Что дальше.</p></div>
+</div>
+<div class="card card-hover flex gap-4 items-start">
+<div class="icon-box"><i class="fa-solid fa-file-lines"></i></div>
+<div><h3 class="font-semibold mb-1">Уроки 12-13. Бонусные материалы</h3><p class="text-sm text-gray-500">FAQ из реалити (28 вопросов с ответами), калькуляторы AMM и IL, шпаргалка "5 шагов".</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ФОРМАТ ОБУЧЕНИЯ -->
+<section class="py-20">
+<div class="max-w-5xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-12">Как проходит обучение</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-solid fa-video"></i></div>
+<h3 class="font-semibold mb-2">Записанные уроки</h3>
+<p class="text-sm text-gray-500">Не онлайн. Смотришь когда удобно, в своем темпе.</p>
+</div>
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-solid fa-stopwatch"></i></div>
+<h3 class="font-semibold mb-2">5-20 мин без воды</h3>
+<p class="text-sm text-gray-500">Короткие уроки. Только то, что нужно для результата.</p>
+</div>
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-brands fa-telegram"></i></div>
+<h3 class="font-semibold mb-2">Всё внутри Telegram</h3>
+<p class="text-sm text-gray-500">Ничего лишнего. Не нужно скачивать приложения и платформы.</p>
+</div>
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-solid fa-user-check"></i></div>
+<h3 class="font-semibold mb-2">Обратная связь от Сергея</h3>
+<p class="text-sm text-gray-500">Лично проверяет задания и отвечает на вопросы.</p>
+</div>
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-solid fa-clipboard-check"></i></div>
+<h3 class="font-semibold mb-2">Проверка домашних заданий</h3>
+<p class="text-sm text-gray-500">9 практических заданий с обратной связью.</p>
+</div>
+<div class="card text-center">
+<div class="icon-box mx-auto mb-4"><i class="fa-solid fa-people-group"></i></div>
+<h3 class="font-semibold mb-2">Закрытый чат</h3>
+<p class="text-sm text-gray-500">Чат с участниками для вопросов и поддержки.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 10 ИЗ 10 -->
+<section class="py-20">
+<div class="max-w-5xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-4">10 из 10 участников открыли пул</h2>
+<p class="text-gray-400 mb-10">Каждый участник реалити дошёл до результата и открыл реальную позицию</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="card p-2"><img src="IMG_2584.jpg" alt="Участник открыл пул" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2585.jpg" alt="Участник открыл пул" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2586.jpg" alt="Участник открыл пул" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2587.jpg" alt="Участник открыл пул" class="rounded-lg w-full"/></div>
+</div>
+</div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="py-20">
+<div class="max-w-5xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-12">Что говорят участники</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card p-2"><img src="IMG_2553.jpg" alt="Отзыв Натальи" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2554.jpg" alt="Отзыв Паши" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2555.jpg" alt="Отзыв Романа и Александра" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2556.jpg" alt="Отзыв Александра" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2557.jpg" alt="Отзыв Натальи" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2558.jpg" alt="Отзыв Натальи — формат и калькуляторы" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2559.jpg" alt="Отзыв Александра" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2560.jpg" alt="Отзыв — видео + инструкция" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2561.jpg" alt="Отзыв ALEKS — пулы как обменник" class="rounded-lg w-full"/></div>
+</div>
+</div>
+</section>
+
+<!-- ВИДЕО-ОТЗЫВЫ -->
+<section class="py-20">
+<div class="max-w-4xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-4">Видео-отзывы участников</h2>
+<p class="text-gray-400 mb-8">Наталья, Александр, Никита и Паша рассказывают о своём опыте</p>
+<div class="card p-4">
+<video controls playsinline preload="metadata" class="w-full rounded-lg" style="max-height: 500px;">
+<source src="video-review.mp4" type="video/mp4">
+</video>
+<div class="mt-6 space-y-2 text-sm">
+<p class="text-gray-500 font-semibold mb-3"><i class="fa-solid fa-clock mr-2"></i>Таймкоды:</p>
+<p class="text-gray-400">0:00 — Первый результат уже в первый день</p>
+<p class="text-gray-400">0:38 — Как было до обучения</p>
+<p class="text-gray-400">1:14 — Как проходит обучение</p>
+<p class="text-gray-400">1:59 — Реальные результаты участников</p>
+<p class="text-gray-400">3:22 — Оценка качества и подачи</p>
+<p class="text-gray-400">4:38 — Итог</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ОЦЕНКИ УЧАСТНИКОВ -->
+<section class="py-20">
+<div class="max-w-4xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-4">Сколько это стоит по мнению участников</h2>
+<p class="text-gray-400 mb-10">Участники реалити оценили обучение значительно дороже. А вы получаете всё это за 990 рублей.</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card p-2"><img src="IMG_2578.jpg" alt="Оценка стоимости от участника" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2579.jpg" alt="Оценка стоимости от участника" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2580.jpg" alt="Оценка стоимости от участника" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2581.jpg" alt="Оценка стоимости от участника" class="rounded-lg w-full"/></div>
+<div class="card p-2"><img src="IMG_2582.jpg" alt="Оценка стоимости от участника" class="rounded-lg w-full"/></div>
+</div>
+</div>
+</section>
+
+<!-- О СЕРГЕЕ -->
+<section class="py-20">
+<div class="max-w-4xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-8">Кто ведет</h2>
+<div class="card flex flex-col md:flex-row gap-8 items-center">
+<img src="sergey-photo.jpg" alt="Сергей Мухомедзянов" class="w-24 h-24 rounded-full object-cover object-top flex-shrink-0 border-2" style="border-color:rgba(239,68,68,0.4)"/>
+<div>
+<h3 class="text-xl font-bold mb-2">Сергей Мухомедзянов</h3>
+<p class="text-sm text-gray-400 mb-4">Практикующий DeFi-инвестор. Зарабатывает на пулах ликвидности больше двух лет. Личный портфель в DeFi с доходностью от 17% до 117% годовых на стейблкоинах.</p>
+<p class="text-sm text-gray-500">Провел реалити-шоу по пулам ликвидности. Все участники открыли реальные позиции и начали зарабатывать. Обучение без воды, с проверкой каждого шага.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ЦЕНА + CTA -->
+<section class="py-20">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<div class="accent-bar mx-auto mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-4">Всё это за 990 ₽</h2>
+<p class="text-gray-400 mb-8 max-w-xl mx-auto">13 уроков, проверка заданий, обратная связь от Сергея, закрытый чат. Начни зарабатывать на пулах ликвидности.</p>
+<div class="card max-w-md mx-auto mb-8">
+<ul class="text-left text-sm space-y-3">
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> 13 видеоуроков по 5-20 минут</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Смотришь в любое время</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Всё внутри Telegram</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Обратная связь лично от Сергея</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Проверка домашних заданий</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Закрытый чат с участниками</li>
+<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-500"></i> Помощь на каждом этапе</li>
+</ul>
+</div>
+<a href="https://t.me/smukhomedzyanov" class="btn-cta text-lg">Написать Сергею</a>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20">
+<div class="max-w-3xl mx-auto px-6">
+<div class="accent-bar mb-6"></div>
+<h2 class="text-2xl md:text-4xl font-bold mb-12">Частые вопросы</h2>
+
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Нужен ли опыт в крипте? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Нет. Первые уроки покрывают всё с нуля: от покупки крипты до открытия кошелька. 23% участников реалити были полными новичками и справились.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Сколько денег нужно для старта? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Хватит $10-20 для практики. Первый пул открываем на минимальную сумму, чтобы понять механику без риска.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Это легально? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Да. Работа с DeFi-протоколами не запрещена. Вы используете децентрализованные сервисы напрямую, без посредников.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Сколько времени занимает обучение? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Уроки по 5-20 минут. Можно пройти за неделю, можно растянуть. Смотришь когда удобно, доступ не ограничен по времени.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">А если потеряю деньги? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Первый урок полностью про безопасность. Начинаем с тестовых сумм ($1). Учимся различать скам, проверять адреса, не путать сети. Риски есть, но мы учим ими управлять.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Какая реальная доходность? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Зависит от стратегии. Стейбл-пулы (USDC/USDT) дают 5-20% годовых с минимальным риском. Волатильные пары типа ETH/USDC могут давать 20-100%+ годовых, но с бОльшими рисками.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Нужно ли сидеть у компьютера весь день? <i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a">Нет. Пулы работают автоматически 24/7. Проверять позицию можно раз в несколько дней. Это не трейдинг.</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center text-gray-600 text-sm">
+<p>&copy; 2025 Сергей Мухомедзянов. Интенсив по пулам ликвидности.</p>
+</footer>
+
+<script>
+function toggleFaq(el){
+  const a=el.nextElementSibling;
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
+  if(!isOpen){a.classList.add('open');el.classList.add('open')}
+}
+</script>
+</body>
+</html>
